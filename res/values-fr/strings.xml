@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="addPerson">Ajouter une personne</string>
+    <string name="addTask">Ajouter une tâche</string>
+    <string name="about">À propos</string>
+    <string name="name">Nom</string>
+    
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/addPerson" android:title="@+string/addPerson"
+		android:icon="@+drawable/ic_menu_invite" />
+
+	<item android:id="@+id/addTask" android:title="@+string/addTask" />
+	<item android:id="@+id/menuMode" android:titleCondensed="@string/menuModeShort"
+		android:title="@string/menuMode">
+		<menu>
+			<group android:checkableBehavior="single">
+				<item android:id="@+id/morseMode" android:title="@string/morse" />
+				<item android:id="@+id/caiusMode" android:title="@string/caius" />
+			</group>
+		</menu>
+	</item>
+	<item android:id="@+id/item5" android:title="Item 3"
+		android:checkable="true" />
+	<item android:id="@+id/about" android:title="@+string/about"
+		android:icon="@+drawable/ic_menu_info_details" />
+</menu>

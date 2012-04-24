@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CaiusCode</string>
+    <string name="addPerson">Add a person</string>
+	<string name="addTask">Add a task</string>
+	<string name="about">About</string>
+	<string name="name">Name</string>
+	<string name="edit">Edit</string>
+	<string name="delete">Delete</string>
+	<string name="morse">Morse Code</string>
+	<string name="caius">Cesar Code</string>
+	<string name="menuMode">Convert mode</string>
+	<string name="menuModeShort">Mode</string>
+</resources>
