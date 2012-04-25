@@ -144,7 +144,66 @@ abstract class Code {
 
 	}
 
+	protected abstract String encodeLetter(char letter);
 	
-	abstract public String encode(String text) throws Exception;
+	
+	public String encode(String source) throws Exception {
+		source = this.removeAccents(source);
+		String dest = "";
+		
+		//Mark the passage
+		boolean first = true;
+		
+		//Mark the end of a word
+		boolean endWord = false;
+		
+		//Mark the end of a sentence
+		boolean endSentence = false;
+		
+		int length = source.length();
+		for(int i = 0; i < length; i++) {
+			char currentChar = source.charAt(i);
+			
+			if(this.isLetter(currentChar)) {
+
+				if(first) {
+					first = false;
+					endWord = false;
+					endSentence = false;
+				} else if(!endWord && !endSentence) {
+					dest += this.sepChar;
+				} else if(endWord && !endSentence) {
+					dest += this.sepWord;
+					endWord = false;
+				} else if(endSentence) {
+					dest += this.sepWord;
+					endWord = false;
+					endSentence = false;
+				}
+
+				dest += this.encodeLetter(currentChar);
+
+			} else {
+            	if(!endWord) {
+            		endWord = this.isEndWord(currentChar);
+            	}
+            	if(!endSentence) {
+            		endSentence = this.isEndSentence(currentChar);
+            	}
+
+
+            }
+        
+		}
+		
+		if(dest == "") {
+			throw new EmptyStringException();
+		}
+    
+        //We add a separator on the end of the sentence
+    	dest += this.sepSentence;
+		return dest;
+	}
+	
 	abstract public String decode(String text);
 }

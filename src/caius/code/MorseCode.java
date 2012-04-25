@@ -57,7 +57,7 @@ public class MorseCode extends Code {
 	 * @param areaLimit
 	 * @return
 	 */
-	protected String morseCamouflage(char currentChar) {
+	protected String encodeLetter(char currentChar) {
 		String letter;
 		
 		if(currentChar > 90) {
@@ -70,9 +70,6 @@ public class MorseCode extends Code {
 		String ti = ".";
 		String ta = "-";
 		String separatorTiTa = "";
-		boolean randomLimited = false;
-		
-		
 		
 		for(int i =0; i < letter.length(); i++) {
 			char curProcessingChar = letter.charAt(i);
@@ -96,64 +93,7 @@ public class MorseCode extends Code {
 		
 		return answer;
 	}
-	
-	public String encode(String source) throws Exception {
-		source = this.removeAccents(source);
-		String dest = "";
-		
-		//Mark the passage
-		boolean first = true;
-		
-		//Mark the end of a word
-		boolean endWord = false;
-		
-		//Mark the end of a sentence
-		boolean endSentence = false;
-		
-		int length = source.length();
-		for(int i = 0; i < length; i++) {
-			char currentChar = source.charAt(i);
-			
-			if(this.isLetter(currentChar)) {
 
-				if(first) {
-					first = false;
-					endWord = false;
-					endSentence = false;
-				} else if(!endWord && !endSentence) {
-					dest += this.sepChar;
-				} else if(endWord && !endSentence) {
-					dest += this.sepWord;
-					endWord = false;
-				} else if(endSentence) {
-					dest += this.sepWord;
-					endWord = false;
-					endSentence = false;
-				}
-
-				dest += this.morseCamouflage(currentChar);
-
-			} else {
-            	if(!endWord) {
-            		endWord = this.isEndWord(currentChar);
-            	}
-            	if(!endSentence) {
-            		endSentence = this.isEndSentence(currentChar);
-            	}
-
-
-            }
-        
-		}
-		
-		if(dest == "") {
-			throw new EmptyStringException();
-		}
-    
-        //We add a separator on the end of the sentence
-    	dest += this.sepSentence;
-		return dest;
-	}
 	
 	public String decode(String source) {
 		String dest = this.removeAccents(source);

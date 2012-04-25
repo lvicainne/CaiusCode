@@ -1,11 +1,14 @@
 package caius.code;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -29,6 +32,7 @@ public class CaiusCodeActivity extends MyActivity {
         ArrayAdapter<Code> adapter = new ArrayAdapter<Code>(this,
                     android.R.layout.simple_spinner_item);
         adapter.add(new MorseCode(this.getString(R.string.morseCode)));
+        adapter.add(new BinaryCode(this.getString(R.string.binaryCode)));
         
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -90,8 +94,42 @@ public class CaiusCodeActivity extends MyActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+    	//final Context context = getApplicationContext();
+    	
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+        
+		//We instantiate out layout like a view
+        //LayoutInflater factory = LayoutInflater.from(this);
+		/*final View alertView = factory.inflate(R.layout.about_view, null);
+				
+        findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				//((Button) alertView.findViewById(R.id.textBox)).setText(R.string.aboutContent);
+
+				/*AlertDialog retour = null;
+				AlertDialog.Builder builder = null;
+		 		builder = new AlertDialog.Builder(context)
+				.setView(alertView)
+				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface dialog, int which) {
+						//Close the dialog
+						finish();
+					}
+				})
+				.setTitle(R.string.about);*
+			}
+		});
+        
+        findViewById(R.id.help).setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				//sendErrorMessage("HELP");
+			}
+		});*/
+        
         return super.onCreateOptionsMenu(menu);
     }
     

@@ -19,4 +19,7 @@
 	<string name="codeType">Type of code</string>
 	<string name="morseCode">Morse Code</string>
 	<string name="emptyString">The text to convert is empty !</string>
+	<string name="ok">OK</string>
+	<string name="aboutContent">About content</string>
+	<string name="binaryCode">Binary Code</string>
 </resources>
