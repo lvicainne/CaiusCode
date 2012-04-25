@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 public class CaiusCodeActivity extends MyActivity {
 	private boolean DECODE_MODE = false;
+
+	private boolean SEND_ENABLE = false;
 	
 	private final static int DIALOG_ABOUT = 1;
 	private final static int DIALOG_HELP = 2;
@@ -46,18 +48,7 @@ public class CaiusCodeActivity extends MyActivity {
         
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        // the destination number
-        /*String number = "6508570720";
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)));*/
-        
-        
 
-        /*final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-        emailIntent.setType("plain/text");
-        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ address.getText().toString()});
-        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject.getText());
-        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailtext.getText());
-     Email.this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
 
         
         findViewById(R.id.leftButton).setOnClickListener(new View.OnClickListener() {
@@ -128,6 +119,18 @@ public class CaiusCodeActivity extends MyActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.itemSend:
+            /*final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+            emailIntent.setType("plain/text");
+            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ address.getText().toString()});
+            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject.getText());
+            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailtext.getText());
+         Email.this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
+        	Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        	sendIntent.setData(Uri.parse("sms:"));
+        	sendIntent.putExtra("sms_body", ((EditText) findViewById(R.id.input)).getText().toString()); 
+        	startActivity(sendIntent);
+        	break;
         case R.id.about:
         	showDialog(CaiusCodeActivity.DIALOG_ABOUT);
           break;
@@ -191,13 +194,20 @@ public class CaiusCodeActivity extends MyActivity {
     	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.decodeText));
     };
     
+    
+    
     /**
      * Set the send menu enable (or not)
      * @param enabled
      */
     public void setSendMessage(boolean enabled) {
-    	//((MenuItem) findViewById(R.menu.menu)).setEnabled(enabled);
+    	this.SEND_ENABLE = enabled;
     };
+    
+    public boolean onPrepareOptionsMenu(Menu menu) {
+    	menu.findItem(R.id.itemSend).setEnabled(this.SEND_ENABLE);
+    	return super.onPrepareOptionsMenu(menu);
+    }
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
