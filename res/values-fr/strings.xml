@@ -9,7 +9,7 @@
 	<string name="menuMode">Mode de conversion</string>
 	<string name="menuModeShort">Mode</string>
 	<string name="encode">Encoder</string>
-	<string name="decode">Decoder</string>
+	<string name="decode">Décoder</string>
 	<string name="send">Envoyer</string>
 	<string name="clear">Vider</string>
 	<string name="encodeText">Texte à encoder</string>

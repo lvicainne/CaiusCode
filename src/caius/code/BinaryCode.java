@@ -1,5 +1,6 @@
 package caius.code;
 
+
 public class BinaryCode extends Code {
 	private String[] binary = new String[91];
 	
@@ -63,9 +64,9 @@ public class BinaryCode extends Code {
 				answer += separatorTiTa;
 			}
 			
-            if(curProcessingChar == '.') {
+            if(curProcessingChar == '0') {
             	answer += ti;
-            } else if(curProcessingChar == '-') {
+            } else if(curProcessingChar == '1') {
             	answer += ta;
             } else {
             	answer += curProcessingChar;
@@ -79,7 +80,7 @@ public class BinaryCode extends Code {
 	@Override
 	public String decode(String text) {
 		// TODO Auto-generated method stub
-		return null;
+		return new String("a");
 	}
 
 }

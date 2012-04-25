@@ -2,15 +2,19 @@ package caius.code;
 
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +26,12 @@ import android.widget.Toast;
 
 public class CaiusCodeActivity extends MyActivity {
 	private boolean DECODE_MODE = false;
+	
+	private final static int DIALOG_ABOUT = 1;
+	private final static int DIALOG_HELP = 2;
+	
+	private static int CODE_RETOUR = 1;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,7 @@ public class CaiusCodeActivity extends MyActivity {
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject.getText());
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailtext.getText());
      Email.this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
+
         
         findViewById(R.id.leftButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -63,21 +74,35 @@ public class CaiusCodeActivity extends MyActivity {
                     }
                     
                     ((EditText) findViewById(R.id.output)).setText(destText);
+                    CaiusCodeActivity.this.setSendMessage(true);
+                    
                 } catch(EmptyStringException e) {
+                	CaiusCodeActivity.this.setSendMessage(false);
                     sendErrorMessage(getString(R.string.emptyString));
+                    
                 } catch(Exception e) {
+                	CaiusCodeActivity.this.setSendMessage(false);
                 	sendErrorMessage(e.toString());
+                	
                 }
             }
         });
         
+        findViewById(R.id.rightButton).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	//Reset the editText to empty strings
+            	((EditText) findViewById(R.id.input)).setText("");
+            	((EditText) findViewById(R.id.output)).setText("");
+            	CaiusCodeActivity.this.setSendMessage(false);
+            }
+        });
         
         ((RadioGroup) findViewById(R.id.radioGroup1)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				if(checkedId == R.id.decodeRadio) {
-					setDecodeMode();
+					CaiusCodeActivity.this.setDecodeMode();
 				} else {
-					setEncodeMode();
+					CaiusCodeActivity.this.setEncodeMode();
 				}
 				
 			}
@@ -94,54 +119,105 @@ public class CaiusCodeActivity extends MyActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-    	//final Context context = getApplicationContext();
-    	
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        
-		//We instantiate out layout like a view
-        //LayoutInflater factory = LayoutInflater.from(this);
-		/*final View alertView = factory.inflate(R.layout.about_view, null);
-				
-        findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				//((Button) alertView.findViewById(R.id.textBox)).setText(R.string.aboutContent);
-
-				/*AlertDialog retour = null;
-				AlertDialog.Builder builder = null;
-		 		builder = new AlertDialog.Builder(context)
-				.setView(alertView)
-				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface dialog, int which) {
-						//Close the dialog
-						finish();
-					}
-				})
-				.setTitle(R.string.about);*
-			}
-		});
-        
-        findViewById(R.id.help).setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				//sendErrorMessage("HELP");
-			}
-		});*/
         
         return super.onCreateOptionsMenu(menu);
     }
     
-    public void setEncodeMode() {
-    	this.DECODE_MODE = false;
-    	((Button) findViewById(R.id.leftButton)).setText(this.getString(R.string.encode));
-    	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.encodeText));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.about:
+        	showDialog(CaiusCodeActivity.DIALOG_ABOUT);
+          break;
+        case R.id.help:
+        	showDialog(CaiusCodeActivity.DIALOG_HELP);
+        	break;
+        case R.id.itemOptions:
+        	startActivityForResult(new Intent(this, MyPreferences.class), CODE_RETOUR);
+        	break;
+        }
+        return super.onOptionsItemSelected(item);
+      }
+    
+    public Dialog onCreateDialog(int id) {
+    	AlertDialog retour = null;
+		AlertDialog.Builder builder = null;
+
+		switch(id) {
+			case DIALOG_ABOUT:
+				builder = new AlertDialog.Builder(this)
+				.setMessage("A")
+				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+	
+					public void onClick(DialogInterface dialog, int which) {
+						//Close the dialog
+						dialog.dismiss();
+					}
+				})
+				.setIcon(R.drawable.ic_menu_info_details)
+				.setTitle(R.string.about);
+			
+			break;
+			case DIALOG_HELP:
+				builder = new AlertDialog.Builder(this)
+				.setMessage("A")
+				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+	
+					public void onClick(DialogInterface dialog, int which) {
+						//Close the dialog
+						dialog.dismiss();
+					}
+				})
+				.setIcon(R.drawable.ic_menu_help)
+				.setTitle(R.string.help);
+			break;
+    	}
+		
+		retour = builder.create();
+		return retour;
     }
     
+    public void setEncodeMode() {
+    	this.setSendMessage(false);
+    	((Button) findViewById(R.id.leftButton)).setText(this.getString(R.string.encode));
+    	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.encodeText));
+    };
+    
     public void setDecodeMode() {
-    	this.DECODE_MODE = true;
+    	this.setSendMessage(true);
     	((Button) findViewById(R.id.leftButton)).setText(this.getString(R.string.decode));
     	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.decodeText));
+    };
+    
+    /**
+     * Set the send menu enable (or not)
+     * @param enabled
+     */
+    public void setSendMessage(boolean enabled) {
+    	//((MenuItem) findViewById(R.menu.menu)).setEnabled(enabled);
+    };
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if(requestCode == CaiusCodeActivity.CODE_RETOUR) {
+		    Toast.makeText(this, R.string.preferencesSaved, Toast.LENGTH_SHORT).show();
+		    this.getPreferences();
+	    }
+    	super.onActivityResult(requestCode, resultCode, data);
     }
+    
+    private void getPreferences() {
+    	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+/*
+    	((TextView)findViewById(R.id.tvLogin)).setText("Nom d'utilisateur : " + preferences.getString("login", ""));
+
+    	((TextView)findViewById(R.id.tvPassword)).setText("Mot de passe : " + preferences.getString("password", ""));
+
+    	((TextView)findViewById(R.id.tvRingtone)).setText("Sonnerie : " + preferences.getString("sonnerie", ""));
+
+    	((TextView)findViewById(R.id.tvVibrate)).setText("Vibreur : " + preferences.getBoolean("vibrate", false));
+*/
+    	}
 }

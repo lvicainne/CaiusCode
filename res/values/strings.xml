@@ -22,4 +22,7 @@
 	<string name="ok">OK</string>
 	<string name="aboutContent">About content</string>
 	<string name="binaryCode">Binary Code</string>
+	<string name="options">Options</string>
+	<string name="show">Show</string>
+	<string name="preferencesSaved">Preferenced saved !</string>
 </resources>
