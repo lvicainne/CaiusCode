@@ -16,24 +16,23 @@ public final class R {
         public static final int ic_menu_invite=0x7f020001;
     }
     public static final class id {
-        public static final int about=0x7f060011;
-        public static final int addPerson=0x7f06000b;
-        public static final int addTask=0x7f06000c;
-        public static final int add_person=0x7f060009;
-        public static final int add_task=0x7f06000a;
-        public static final int caiusMode=0x7f06000f;
-        public static final int checkBox1=0x7f060002;
-        public static final int checkBox2=0x7f060005;
-        public static final int checkBox3=0x7f060007;
-        public static final int checkedTextView1=0x7f060003;
-        public static final int item5=0x7f060010;
-        public static final int mainLayout=0x7f060000;
-        public static final int menuMode=0x7f06000d;
-        public static final int morseMode=0x7f06000e;
-        public static final int tableRow1=0x7f060001;
-        public static final int tableRow2=0x7f060004;
-        public static final int tableRow3=0x7f060006;
-        public static final int tableRow4=0x7f060008;
+        public static final int about=0x7f060010;
+        public static final int addPerson=0x7f06000a;
+        public static final int addTask=0x7f06000b;
+        public static final int button1=0x7f060009;
+        public static final int button2=0x7f060008;
+        public static final int caiusMode=0x7f06000e;
+        public static final int editText1=0x7f060007;
+        public static final int item5=0x7f06000f;
+        public static final int menuMode=0x7f06000c;
+        public static final int morseMode=0x7f06000d;
+        public static final int radio1=0x7f060002;
+        public static final int radio2=0x7f060003;
+        public static final int radioGroup1=0x7f060001;
+        public static final int spinner1=0x7f060005;
+        public static final int textView1=0x7f060000;
+        public static final int textView3=0x7f060004;
+        public static final int textView4=0x7f060006;
     }
     public static final class layout {
         public static final int main=0x7f030000;
