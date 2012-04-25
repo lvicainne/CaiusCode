@@ -129,10 +129,9 @@ public class CaiusCodeActivity extends MyActivity {
         case R.id.itemSendMail:
             final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
             emailIntent.setType("plain/text");
-            //emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ });
-            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "a");
+            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Encrypted Message by CaiusCode");
             emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.output)).getText().toString());
-            this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            this.startActivity(Intent.createChooser(emailIntent, this.getString(R.string.sendMail) + "..."));
         	break;
         	
         case R.id.about:

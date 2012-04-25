@@ -16,6 +16,14 @@
 	<string name="decodeText">Texte à décoder</string>
 	<string name="codeType">Type d\'encodage</string>
 	<string name="morseCode">Code Morse</string>
-    <string name="emptyString">Le texte à convertir est vide !</string>
-    
+	<string name="emptyString">Le texte à convertir est vide !</string>
+	<string name="ok">OK</string>
+	<string name="aboutContent">L\'auteur de cette application s\'appelle Louis VICAINNE.</string>
+	<string name="binaryCode">Code Binaire</string>
+	<string name="options">Options</string>
+	<string name="show">Voir</string>
+	<string name="preferencesSaved">Les options sont sauvegardées !</string>
+	<string name="sendSms">Envoyer par SMS</string>
+	<string name="sendMail">Envoyer par courriel</string>
+	<string name="helpContent">Super aide !</string>
 </resources>
