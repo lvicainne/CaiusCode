@@ -4,6 +4,8 @@ abstract class Code {
 	private String name;
 	private int id;
 	
+	protected boolean hasToRemoveAccent = true;
+	protected boolean keepSpecialChars = false;
 	protected String sepSentence = "///";
 	protected String sepChar = "/";
 	protected String sepWord = "//";
@@ -36,10 +38,11 @@ abstract class Code {
 		      if (! ((chaine.charAt(i) < 48 && chaine.charAt(i) != 32) || chaine.charAt(i) == 255 ||
 		             chaine.charAt(i) == 208 || chaine.charAt(i) == 209 ||
 		             chaine.charAt(i) == 215 || chaine.charAt(i) == 216 ||
-		             (chaine.charAt(i) < 65 && chaine.charAt(i) > 57) ||
 		             (chaine.charAt(i) < 192 && chaine.charAt(i) > 122) ||
 		             (chaine.charAt(i) < 65 && chaine.charAt(i) > 57))) {
 		        temp = temp + chaine.charAt(i);
+		      } else if(this.keepSpecialChars) {
+		    	  temp += chaine.charAt(i);
 		      }
 		    }
 		    temp = temp.toUpperCase();
@@ -127,7 +130,11 @@ abstract class Code {
 	 * @return boolean
 	 */
 	protected boolean isLetter(char currentChar) {
-		char newChar = this.removeAccents(Character.toString(currentChar)).charAt(0);
+		String tempString = this.removeAccents(Character.toString(currentChar));
+		if(tempString.length() < 1) {
+			return false;
+		}
+		char newChar = tempString.charAt(0);
 		
 		if(newChar > 64 && newChar < 91) {
 			//Upper case
@@ -163,7 +170,9 @@ abstract class Code {
 	
 	
 	public String encode(String source) throws Exception {
-		source = this.removeAccents(source);
+		if(this.hasToRemoveAccent) {
+			source = this.removeAccents(source);
+		}
 		String dest = "";
 		
 		//Mark the passage
@@ -204,6 +213,9 @@ abstract class Code {
             	}
             	if(!endSentence) {
             		endSentence = this.isEndSentence(currentChar);
+            	}
+            	if(this.keepSpecialChars) {
+            		dest += Character.toString(currentChar);
             	}
 
 

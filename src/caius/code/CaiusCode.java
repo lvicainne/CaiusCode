@@ -6,6 +6,12 @@ public class CaiusCode extends Code {
 	public CaiusCode(String name, int shift) {
 		super(1, name);
 		this.shift = shift;
+		
+		/**
+		 * DO NOT remove special chars 
+		 * (they don't make any problem with this encoding)
+		 */
+		this.keepSpecialChars = true;
 	}
 	
 	private char processDecal(char letter) {
