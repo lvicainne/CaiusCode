@@ -3,7 +3,16 @@
 	<item android:id="@+id/itemSend" 
 		android:title="@+string/send"
 		android:icon="@+drawable/ic_menu_send"
-		android:enabled="false" />
+		android:enabled="false" >
+		
+		<menu>
+			<item android:id="@+id/itemSendSms" 
+			android:title="@+string/sendSms" />
+			
+			<item android:id="@+id/itemSendMail" 
+			android:title="@+string/sendMail" />
+		</menu>
+	</item>
 	
 	<item android:id="@+id/itemShow" 
 		android:title="@+string/show"

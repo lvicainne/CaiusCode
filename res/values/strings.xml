@@ -25,4 +25,7 @@
 	<string name="options">Options</string>
 	<string name="show">Show</string>
 	<string name="preferencesSaved">Preferenced saved !</string>
+	<string name="sendSms">Send by SMS</string>
+	<string name="sendMail">Send by mail</string>
+	<string name="helpContent">Help</string>
 </resources>

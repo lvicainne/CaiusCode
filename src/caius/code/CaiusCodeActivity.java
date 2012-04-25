@@ -119,27 +119,34 @@ public class CaiusCodeActivity extends MyActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.itemSend:
-            /*final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-            emailIntent.setType("plain/text");
-            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ address.getText().toString()});
-            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject.getText());
-            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailtext.getText());
-         Email.this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));*/
-        	Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-        	sendIntent.setData(Uri.parse("sms:"));
-        	sendIntent.putExtra("sms_body", ((EditText) findViewById(R.id.input)).getText().toString()); 
-        	startActivity(sendIntent);
+        case R.id.itemSendSms:
+        	Intent sendSmsIntent = new Intent(Intent.ACTION_VIEW);
+        	sendSmsIntent.setData(Uri.parse("sms:"));
+        	sendSmsIntent.putExtra("sms_body", ((EditText) findViewById(R.id.output)).getText().toString()); 
+        	startActivity(sendSmsIntent);
         	break;
+        	
+        case R.id.itemSendMail:
+            final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+            emailIntent.setType("plain/text");
+            //emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{ });
+            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "a");
+            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ((EditText) findViewById(R.id.output)).getText().toString());
+            this.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        	break;
+        	
         case R.id.about:
         	showDialog(CaiusCodeActivity.DIALOG_ABOUT);
-          break;
+        	break;
+        	
         case R.id.help:
         	showDialog(CaiusCodeActivity.DIALOG_HELP);
         	break;
+        	
         case R.id.itemOptions:
         	startActivityForResult(new Intent(this, MyPreferences.class), CODE_RETOUR);
         	break;
+        	
         }
         return super.onOptionsItemSelected(item);
       }
@@ -151,7 +158,7 @@ public class CaiusCodeActivity extends MyActivity {
 		switch(id) {
 			case DIALOG_ABOUT:
 				builder = new AlertDialog.Builder(this)
-				.setMessage("A")
+				.setMessage(R.string.aboutContent)
 				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
 	
 					public void onClick(DialogInterface dialog, int which) {
@@ -165,7 +172,7 @@ public class CaiusCodeActivity extends MyActivity {
 			break;
 			case DIALOG_HELP:
 				builder = new AlertDialog.Builder(this)
-				.setMessage("A")
+				.setMessage(R.string.helpContent)
 				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
 	
 					public void onClick(DialogInterface dialog, int which) {
