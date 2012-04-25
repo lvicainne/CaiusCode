@@ -3,25 +3,11 @@
 	<item android:id="@+id/itemSend" 
 		android:title="@+string/send"
 		android:icon="@+drawable/ic_menu_send"
-		android:enabled="false" 
-		/>
+		android:enabled="false" />
 	
-   	<item android:id="@+id/itemShow" 
-	    android:title="@+string/show"
-	    android:icon="@+drawable/ic_menu_view" />
-   	
-	<item android:id="@+id/itemMode" 
-		android:titleCondensed="@string/menuModeShort"
-		android:title="@string/menuMode">
-		
-		<menu>
-			<group android:checkableBehavior="single">
-				<item android:id="@+id/morseMode" android:title="@string/morse" />
-				<item android:id="@+id/caiusMode" android:title="@string/caius" />
-			</group>
-		</menu>
-		
-	</item>
+	<item android:id="@+id/itemShow" 
+		android:title="@+string/show"
+		android:icon="@+drawable/ic_menu_view" />
 	
 	<item android:id="@+id/itemOptions" 
 		android:title="@+string/options"
@@ -31,7 +17,8 @@
 		android:title="@+string/about"
 		android:icon="@+drawable/ic_menu_info_details" />
 	
-	<item android:id="@+id/help" android:title="@+string/help"
+	<item android:id="@+id/help" 
+		android:title="@+string/help"
 		android:icon="@+drawable/ic_menu_help" />
 	
 </menu>
