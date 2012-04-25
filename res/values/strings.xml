@@ -18,4 +18,5 @@
 	<string name="decodeText">Text to decode</string>
 	<string name="codeType">Type of code</string>
 	<string name="morseCode">Morse Code</string>
+	<string name="emptyString">The text to convert is empty !</string>
 </resources>

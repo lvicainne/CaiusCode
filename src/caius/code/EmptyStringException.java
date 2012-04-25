@@ -2,8 +2,7 @@ package caius.code;
 
 public class EmptyStringException extends Exception {
 
-	public EmptyStringException(String string) {
+	public EmptyStringException() {
 		// TODO Auto-generated constructor stub
 	}
-
 }

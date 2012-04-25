@@ -50,7 +50,7 @@ public class CaiusCodeActivity extends MyActivity {
                 String sourceText = ((EditText) findViewById(R.id.input)).getText().toString();
                 Code currentCode = (Code) ((Spinner) findViewById(R.id.spinner1)).getSelectedItem();
                 try {
-                	String destText;
+                	String destText = "";
                 	
                     if(DECODE_MODE) {
                     	destText = currentCode.decode(sourceText);
@@ -59,13 +59,10 @@ public class CaiusCodeActivity extends MyActivity {
                     }
                     
                     ((EditText) findViewById(R.id.output)).setText(destText);
+                } catch(EmptyStringException e) {
+                    sendErrorMessage(getString(R.string.emptyString));
                 } catch(Exception e) {
-                    
-                    Context context = getApplicationContext();
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(context, e.toString(), duration);
-                    toast.show();
+                	sendErrorMessage(e.toString());
                 }
             }
         });
@@ -81,6 +78,14 @@ public class CaiusCodeActivity extends MyActivity {
 				
 			}
         });
+    }
+    
+    protected void sendErrorMessage(String str) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, str, duration);
+        toast.show();
     }
     
     @Override

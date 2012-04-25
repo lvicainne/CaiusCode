@@ -1,7 +1,7 @@
 package caius.code;
 
 public class MorseCode extends Code {
-	private String[] morse = new String[90];
+	private String[] morse = new String[91];
 	
 	public MorseCode(String name) {
 		super(1, name);
@@ -57,12 +57,42 @@ public class MorseCode extends Code {
 	 * @param areaLimit
 	 * @return
 	 */
-	protected String morseCamouflage(String letter) {
+	protected String morseCamouflage(char currentChar) {
+		String letter;
+		
+		if(currentChar > 90) {
+			return new String("");
+		} else {
+			letter = this.morse[currentChar];
+		}
+		
 		String answer = "";
 		String ti = ".";
 		String ta = "-";
-		String separatorTiTa = " ";
-		boolean aleaLimit = false;
+		String separatorTiTa = "";
+		boolean randomLimited = false;
+		
+		
+		
+		for(int i =0; i < letter.length(); i++) {
+			char curProcessingChar = letter.charAt(i);
+			
+
+			
+			//The first pass, we do not add the separator
+			if(i != 1) {
+				answer += separatorTiTa;
+			}
+			
+            if(curProcessingChar == '.') {
+            	answer += ti;
+            } else if(curProcessingChar == '-') {
+            	answer += ta;
+            } else {
+            	answer += curProcessingChar;
+            }
+			
+		}
 		
 		return answer;
 	}
@@ -84,8 +114,6 @@ public class MorseCode extends Code {
 		for(int i = 0; i < length; i++) {
 			char currentChar = source.charAt(i);
 			
-			dest = dest + "a";
-			
 			if(this.isLetter(currentChar)) {
 
 				if(first) {
@@ -103,7 +131,7 @@ public class MorseCode extends Code {
 					endSentence = false;
 				}
 
-				dest += this.morseCamouflage(this.morse[currentChar]);
+				dest += this.morseCamouflage(currentChar);
 
 			} else {
             	if(!endWord) {
@@ -119,7 +147,7 @@ public class MorseCode extends Code {
 		}
 		
 		if(dest == "") {
-			throw new EmptyStringException("La chaine est vide !");
+			throw new EmptyStringException();
 		}
     
         //We add a separator on the end of the sentence

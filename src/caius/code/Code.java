@@ -4,9 +4,9 @@ abstract class Code {
 	private String name;
 	private int id;
 	
-	protected String sepSentence = "/";
-	protected String sepChar = "#";
-	protected String sepWord = "_";
+	protected String sepSentence = "///";
+	protected String sepChar = "/";
+	protected String sepWord = "//";
 	
 	public Code(int id, String name) {
 		this.id = id;
@@ -51,7 +51,7 @@ abstract class Code {
 		    temp = temp.replace('Ç', 'C');
 		    temp = temp.replaceAll("À | Á | Â | Ã | Ä | Å | Æ", "A");
 		 
-		    return temp.toLowerCase();
+		    return temp;
 	}
 	
 	/**

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="addPerson">Ajouter une personne</string>
-    <string name="addTask">Ajouter une tâche</string>
     <string name="about">À propos</string>
-    <string name="name">Nom</string>
+	<string name="name">Nom</string>
+	<string name="edit">Modifier</string>
+	<string name="delete">Supprimer</string>
+	<string name="morse">Code Morse</string>
+	<string name="caius">Code César</string>
+	<string name="menuMode">Mode de conversion</string>
+	<string name="menuModeShort">Mode</string>
+	<string name="encode">Encoder</string>
+	<string name="decode">Decoder</string>
+	<string name="send">Envoyer</string>
+	<string name="clear">Vider</string>
+	<string name="encodeText">Texte à encoder</string>
+	<string name="decodeText">Texte à décoder</string>
+	<string name="codeType">Type d\'encodage</string>
+	<string name="morseCode">Code Morse</string>
+    <string name="emptyString">Le texte à convertir est vide !</string>
     
 </resources>
