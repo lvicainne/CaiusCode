@@ -6,6 +6,8 @@ abstract class Code {
 	
 	protected boolean hasToRemoveAccent = true;
 	protected boolean keepSpecialChars = false;
+	protected boolean addSeparators = true;
+	
 	protected String sepSentence = "///";
 	protected String sepChar = "/";
 	protected String sepWord = "//";
@@ -195,12 +197,15 @@ abstract class Code {
 					endWord = false;
 					endSentence = false;
 				} else if(!endWord && !endSentence) {
-					dest += this.sepChar;
+					if(this.addSeparators)
+						dest += this.sepChar;
 				} else if(endWord && !endSentence) {
-					dest += this.sepWord;
+					if(this.addSeparators)
+						dest += this.sepWord;
 					endWord = false;
 				} else if(endSentence) {
-					dest += this.sepWord;
+					if(this.addSeparators)
+						dest += this.sepWord;
 					endWord = false;
 					endSentence = false;
 				}
@@ -228,7 +233,8 @@ abstract class Code {
 		}
     
         //We add a separator on the end of the sentence
-    	dest += this.sepSentence;
+		if(this.addSeparators)
+			dest += this.sepSentence;
 		return dest;
 	}
 	

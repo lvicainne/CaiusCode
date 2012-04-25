@@ -12,6 +12,7 @@ public class CaiusCode extends Code {
 		 * (they don't make any problem with this encoding)
 		 */
 		this.keepSpecialChars = true;
+		this.addSeparators = false;
 	}
 	
 	private char processDecal(char letter) {
