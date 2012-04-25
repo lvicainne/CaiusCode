@@ -11,55 +11,69 @@
 			android:layout_height="wrap_content" android:text="@string/app_name"
 			android:textAppearance="?android:attr/textAppearanceLarge" />
 
-		<RadioGroup android:id="@+id/radioGroup1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_gravity="center" android:orientation="horizontal">
+		<RadioGroup
+		    android:id="@+id/radioGroup1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center"
+		    android:checkedButton="@+id/encodeRadio"
+		    android:orientation="horizontal" >
 
-			<RadioButton android:id="@+id/radio1"
+			<RadioButton android:id="@+id/encodeRadio"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:text="RadioButton" />
+				android:text="@string/encode" />
 
-			<RadioButton android:id="@+id/radio2"
+			<RadioButton android:id="@+id/decodeRadio"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:text="RadioButton" />
+				android:text="@string/decode" />
 
 		</RadioGroup>
 
+		<TextView
+		    android:id="@+id/textView3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="@string/codeType" />
 
-		<TextView android:id="@+id/textView3" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:layout_alignParentLeft="true"
-			android:layout_alignParentTop="true" android:text="TextView2" />
+		<Spinner
+		    android:id="@+id/spinner1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:prompt="@string/codeType" />
 
-		<Spinner android:id="@+id/spinner1" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" />
+		<TextView android:id="@+id/encodeTextView" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="@string/encodeText" />
 
-
-		<TextView android:id="@+id/textView4" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="TextView3" />
-
-		<EditText android:id="@+id/editText1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:layout_weight="1"
-			android:ems="10" android:inputType="textLongMessage|textMultiLine"
+		<EditText android:id="@+id/input" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+			android:layout_weight="1"
+			android:ems="10" 
+			android:inputType="textLongMessage|textMultiLine"
 			android:singleLine="false">
 
 			<requestFocus />
 		</EditText>
 
-		<EditText android:id="@+id/editText2" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:layout_weight="1"
+		<EditText android:id="@+id/output" 
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
 			android:ems="10" android:inputType="textMultiLine" />
 
 	</LinearLayout>
 	<LinearLayout android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:layout_weight="0">
 
-		<Button android:id="@+id/button2" android:layout_width="0dip"
-			android:layout_height="wrap_content" android:layout_weight="1"
-			android:text="Button" />
+		<Button android:id="@+id/leftButton" 
+			android:layout_width="0dip"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"
+			android:text="@string/encode" />
 
-		<Button android:id="@+id/button1" android:layout_width="0dip"
-			android:layout_height="wrap_content" android:layout_weight="1"
-			android:text="Button" />
+		<Button android:id="@+id/rightButton" android:layout_width="0dip"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"
+			android:text="@string/clear" />
 
 	</LinearLayout>
 

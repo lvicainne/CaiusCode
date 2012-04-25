@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CaiusCode</string>
-    <string name="addPerson">Add a person</string>
-	<string name="addTask">Add a task</string>
+	<string name="help">Help</string>
 	<string name="about">About</string>
 	<string name="name">Name</string>
 	<string name="edit">Edit</string>
@@ -11,4 +10,12 @@
 	<string name="caius">Cesar Code</string>
 	<string name="menuMode">Convert mode</string>
 	<string name="menuModeShort">Mode</string>
+	<string name="encode">Encode</string>
+	<string name="decode">Decode</string>
+	<string name="send">Send</string>
+	<string name="clear">Clear</string>
+	<string name="encodeText">Text to encode</string>
+	<string name="decodeText">Text to decode</string>
+	<string name="codeType">Type of code</string>
+	<string name="morseCode">Morse Code</string>
 </resources>
