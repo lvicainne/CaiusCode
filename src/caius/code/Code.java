@@ -143,6 +143,21 @@ abstract class Code {
 		}
 
 	}
+	
+	/**
+	 * Return true if the current char is a number
+	 * @param currentChar
+	 * @return boolean
+	 */
+	protected boolean isNumber(char currentChar) {
+		if(currentChar > 47 && currentChar < 58) {
+			//Numbers
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 
 	protected abstract String encodeLetter(char letter);
 	

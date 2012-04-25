@@ -28,4 +28,5 @@
 	<string name="sendSms">Send by SMS</string>
 	<string name="sendMail">Send by mail</string>
 	<string name="helpContent">Help</string>
+	<string name="prefOutput">Output preferences</string>
 </resources>

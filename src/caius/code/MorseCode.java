@@ -97,7 +97,7 @@ public class MorseCode extends Code {
 	
 	public String decode(String source) {
 		String dest = this.removeAccents(source);
-		return dest + "aaa" ;
+		return dest;
 	}
 
 }

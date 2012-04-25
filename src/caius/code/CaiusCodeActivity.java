@@ -45,6 +45,8 @@ public class CaiusCodeActivity extends MyActivity {
                     android.R.layout.simple_spinner_item);
         adapter.add(new MorseCode(this.getString(R.string.morseCode)));
         adapter.add(new BinaryCode(this.getString(R.string.binaryCode)));
+        adapter.add(new CaiusCode("Avocat", 10));
+        adapter.add(new CaiusCode("LN", 2));
         
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
