@@ -7,10 +7,6 @@
 		android:layout_height="wrap_content" android:layout_weight="1"
 		android:orientation="vertical">
 
-		<TextView android:id="@+id/textView1" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:text="@string/app_name"
-			android:textAppearance="?android:attr/textAppearanceLarge" />
-
 		<RadioGroup
 		    android:id="@+id/radioGroup1"
 		    android:layout_width="wrap_content"
