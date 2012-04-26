@@ -169,9 +169,9 @@ abstract class Code {
 	}
 
 	protected abstract String encodeLetter(char letter);
+	protected abstract String decodeLetter(char letter);
 	
-	
-	public String encode(String source) throws Exception {
+	private String process(String source, boolean encode) throws EmptyStringException {
 		if(this.hasToRemoveAccent) {
 			source = this.removeAccents(source);
 		}
@@ -210,7 +210,11 @@ abstract class Code {
 					endSentence = false;
 				}
 
-				dest += this.encodeLetter(currentChar);
+				if(encode) {
+					dest += this.encodeLetter(currentChar);
+				} else {
+					dest += this.decodeLetter(currentChar);
+				}
 
 			} else {
             	if(!endWord) {
@@ -238,5 +242,11 @@ abstract class Code {
 		return dest;
 	}
 	
-	abstract public String decode(String text);
+	public String encode(String source) throws EmptyStringException {
+		return this.process(source, true);
+	}
+	
+	public String decode(String source) throws EmptyStringException {
+		return this.process(source, false);
+	}
 }

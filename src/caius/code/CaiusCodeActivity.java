@@ -60,7 +60,7 @@ public class CaiusCodeActivity extends MyActivity {
                 try {
                 	String destText = "";
                 	
-                    if(DECODE_MODE) {
+                    if(CaiusCodeActivity.this.DECODE_MODE) {
                     	destText = currentCode.decode(sourceText);
                     } else {
                     	destText = currentCode.encode(sourceText);
@@ -192,12 +192,14 @@ public class CaiusCodeActivity extends MyActivity {
     
     public void setEncodeMode() {
     	this.setSendMessage(false);
+    	this.DECODE_MODE = false;
     	((Button) findViewById(R.id.leftButton)).setText(this.getString(R.string.encode));
     	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.encodeText));
     };
     
     public void setDecodeMode() {
     	this.setSendMessage(true);
+    	this.DECODE_MODE = true;
     	((Button) findViewById(R.id.leftButton)).setText(this.getString(R.string.decode));
     	((TextView) findViewById(R.id.encodeTextView)).setText(this.getString(R.string.decodeText));
     };

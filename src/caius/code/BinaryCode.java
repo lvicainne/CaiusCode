@@ -77,10 +77,8 @@ public class BinaryCode extends Code {
 		return answer;
 	}
 
-	@Override
-	public String decode(String text) {
-		// TODO Auto-generated method stub
-		return new String("a");
+	protected String decodeLetter(char currentChar) {
+		return Character.toString(currentChar);
 	}
 
 }
