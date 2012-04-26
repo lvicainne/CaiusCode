@@ -4,12 +4,20 @@ CaiusCode
 **CaiusCode** is an **Android application** for converting text data into a crypted string.
 
 
+Features (implemented)
+-------------
+
+* Cesar code (crypt and uncrypt)
+* Binary Code, Morse Code (crypt only)
+* Send text by SMS
+* Send text by mail
+
+
 Features (not implemented)
 -------------
 
-* Crypt and Uncrypt text
-* Send text by SMS
-* Send text by mail
+* Mobile code
+* Vigenere Cipher
 * Choose the separator between letters, words or sentences
 
 
