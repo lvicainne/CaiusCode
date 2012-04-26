@@ -34,7 +34,16 @@ abstract class Code {
 	protected String removeAccents(String chaine) {
 		    if (chaine == null)
 		      return null;
-		 
+		    
+		    chaine = chaine.toUpperCase();
+		    chaine = chaine.replace('Ý', 'Y');
+		    chaine = chaine.replaceAll("Ù|Ú|Û|Ü", "U");
+		    chaine = chaine.replaceAll("Ò|Ó|Ô|Õ|Ö", "O");
+		    chaine = chaine.replaceAll("Ì|Í|Î|Ï", "I");
+		    chaine = chaine.replaceAll("È|É|Ê|Ë", "E");
+		    chaine = chaine.replace('Ç', 'C');
+		    chaine = chaine.replaceAll("À|Á|Â|Ã|Ä|Å|Æ", "A");
+		    
 		    String temp = "";
 		    for (int i=0; i < chaine.length(); i++) {
 		      if (! ((chaine.charAt(i) < 48 && chaine.charAt(i) != 32) || chaine.charAt(i) == 255 ||
@@ -47,14 +56,7 @@ abstract class Code {
 		    	  temp += chaine.charAt(i);
 		      }
 		    }
-		    temp = temp.toUpperCase();
-		    temp = temp.replace('Ý', 'Y');
-		    temp = temp.replaceAll("Ù | Ú | Û | Ü", "U");
-		    temp = temp.replaceAll("Ò | Ó | Ô | Õ | Ö", "O");
-		    temp = temp.replaceAll("Ì | Í | Î | Ï", "I");
-		    temp = temp.replaceAll("È | É | Ê | Ë", "E");
-		    temp = temp.replace('Ç', 'C');
-		    temp = temp.replaceAll("À | Á | Â | Ã | Ä | Å | Æ", "A");
+
 		 
 		    return temp;
 	}
